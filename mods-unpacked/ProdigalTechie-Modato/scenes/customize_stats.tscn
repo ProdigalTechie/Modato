@@ -1,0 +1,83 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://ui/menus/run/character_selection.tscn" type="PackedScene" id=1]
+[ext_resource path="res://mods-unpacked/ProdigalTechie-Modato/scenes/customize_stats.gd" type="Script" id=2]
+[ext_resource path="res://ui/menus/ingame/item_panel_ui.tscn" type="PackedScene" id=3]
+
+[node name="CustomizeStats" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+random_icon = null
+
+[node name="VBoxContainer" parent="MarginContainer" index="0"]
+margin_left = 398.0
+margin_right = 1521.0
+
+[node name="TitleContainer" parent="MarginContainer/VBoxContainer" index="0"]
+margin_right = 1123.0
+
+[node name="Title" parent="MarginContainer/VBoxContainer/TitleContainer" index="0"]
+margin_left = 296.0
+margin_right = 826.0
+text = "CUSTOMIZE STATS"
+
+[node name="DescriptionContainer" parent="MarginContainer/VBoxContainer" index="1"]
+margin_right = 1123.0
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/DescriptionContainer" index="0"]
+margin_bottom = 500.0
+columns = 2
+
+[node name="CharacterPanel" parent="MarginContainer/VBoxContainer/DescriptionContainer" index="1" instance=ExtResource( 3 )]
+margin_left = 15.0
+margin_right = 374.0
+margin_bottom = 500.0
+
+[node name="MarginContainer" parent="MarginContainer/VBoxContainer/DescriptionContainer/CharacterPanel" index="0"]
+margin_bottom = 495.0
+
+[node name="VBoxContainer" parent="MarginContainer/VBoxContainer/DescriptionContainer/CharacterPanel/MarginContainer" index="0"]
+margin_bottom = 476.0
+
+[node name="ItemDescription" parent="MarginContainer/VBoxContainer/DescriptionContainer/CharacterPanel/MarginContainer/VBoxContainer" index="0"]
+expand_indefinitely = false
+
+[node name="VBoxContainer" parent="MarginContainer/VBoxContainer/DescriptionContainer/CharacterPanel/MarginContainer/VBoxContainer/ItemDescription" index="1"]
+margin_top = 116.0
+margin_right = 321.0
+margin_bottom = 116.0
+
+[node name="ScrollContainer" parent="MarginContainer/VBoxContainer/DescriptionContainer/CharacterPanel/MarginContainer/VBoxContainer/ItemDescription" index="2"]
+margin_top = 116.0
+margin_bottom = 461.0
+rect_min_size = Vector2( 0, 345 )
+
+[node name="Panel" parent="MarginContainer/VBoxContainer/DescriptionContainer" index="2"]
+margin_left = 389.0
+margin_right = 748.0
+
+[node name="LockedPanel" parent="MarginContainer/VBoxContainer/DescriptionContainer" index="3"]
+margin_left = 763.0
+margin_right = 1123.0
+
+[node name="InfoPanel" parent="MarginContainer/VBoxContainer/DescriptionContainer" index="4"]
+visible = false
+margin_left = 1288.0
+margin_right = 1674.0
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer" index="2"]
+margin_top = 643.0
+margin_right = 1123.0
+margin_bottom = 708.0
+
+[node name="ScrollContainer" parent="MarginContainer/VBoxContainer" index="3"]
+margin_left = 551.0
+margin_top = 743.0
+margin_right = 571.0
+
+[node name="Inventory" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer" index="0"]
+columns = 10
+
+[editable path="MarginContainer/VBoxContainer/DescriptionContainer/CharacterPanel"]
+[editable path="MarginContainer/VBoxContainer/DescriptionContainer/CharacterPanel/MarginContainer/VBoxContainer/ItemDescription"]
+[editable path="MarginContainer/VBoxContainer/DescriptionContainer/Panel"]
+[editable path="MarginContainer/VBoxContainer/DescriptionContainer/Panel/MarginContainer/VBoxContainer/ItemDescription"]

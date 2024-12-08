@@ -1,0 +1,44 @@
+# list of additional files to ignore:
+
+# ignore decompiled Brotato folders
+.assets/*
+.autoconverted/*
+.import/*
+.vscode/*
+addons/*
+debug/*
+challenges/*
+dlcs/*
+effect_behaviors/*
+effects/*
+entities/*
+global/*
+items/*
+overlap/*
+particles/*
+projectiles/*
+resources/*
+singletons/*
+tools/*
+ui/*
+visual_effects/*
+weapons/*
+zones/*
+
+# ignore decompiled Brotato files
+brotato_icon.ico
+brotato_icon.png
+brotato_icon.png.import
+default_env.tres
+gdre_export.log
+icon.png
+icon.png.import
+items_test.tscn
+main.gd
+main.tscn
+pause.gd
+pause.tscn
+project.godot
+splash.png
+splash.png.import
+steam_data.json
