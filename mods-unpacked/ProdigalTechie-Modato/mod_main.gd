@@ -4,7 +4,6 @@ const MOD_ID = "ProdigalTechie-Modato"
 const MOD_DIR = MOD_ID + "/"
 
 const EXTS = [
-	"ui/menus/pages/main_menu.gd",
 	"ui/menus/run/character_selection.gd"
 ]
 
