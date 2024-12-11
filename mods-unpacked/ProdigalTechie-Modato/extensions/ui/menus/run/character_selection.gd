@@ -1,7 +1,7 @@
 extends "res://ui/menus/run/character_selection.gd"
 
-#testing
 func _on_element_pressed(element: InventoryElement, _inventory_player_index: int)->void :
+	var char_select_id = "ProdigalTechie-Modato:CharacterSelect"
 	var customize_stats_scene = "res://mods-unpacked/ProdigalTechie-Modato/scenes/customize_stats.tscn"
 	var inventory_player_index = FocusEmulatorSignal.get_player_index(element)
 	if inventory_player_index < 0:
@@ -22,4 +22,7 @@ func _on_element_pressed(element: InventoryElement, _inventory_player_index: int
 
 	_set_selected_element(inventory_player_index)
 	
-	get_tree().change_scene(customize_stats_scene)
+	if get_tree().change_scene(customize_stats_scene) == OK:
+		ModLoaderLog.info("Successfully changed scene!", char_select_id)
+	else:
+		ModLoaderLog.error('Failed loading customize stats scene.', char_select_id)

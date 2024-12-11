@@ -1,6 +1,11 @@
 # list of additional files to ignore:
 
-# ignore decompiled Brotato folders
+# ignore all other mod folders:
+mods-unpacked/
+!mods-unpacked/ProdigalTechie-Modato/*
+
+
+# ignore decompiled Brotato folders:
 .assets/*
 .autoconverted/*
 .import/*
