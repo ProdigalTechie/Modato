@@ -13,11 +13,17 @@ func _ready()->void :
 	_inventories.hide()
 	
 	#add customizeable stats
-	for effect in RunData.players_data[player_index].current_character.effects:
+	for effect in RunData.players_data[player_index].current_character.effects:	
 		#print(effect.serialize())
-		
 		var new_stat_label = Label.new()
-		new_stat_label.text = str(effect.key)
+
+		if effect.key == "effect_increase_stat_gains" or effect.key == "effect_reduce_stat_gains":
+			new_stat_label.text = tr(effect.key).format({
+				"0": tr(effect.stat_displayed.to_upper())
+			})
+		else:
+			new_stat_label.text = tr(effect.key.to_upper())
+			
 		_stats.add_child(new_stat_label)
 		
 		var new_stat = LineEdit.new()
@@ -25,8 +31,6 @@ func _ready()->void :
 		new_stat.text = str(effect.value)
 		_stats.add_child(new_stat)
 	
-	#continue button
-	# warning-ignore:return_value_discarded
 	_continue.text = "Select Weapon"
 	_continue.connect("button_up", self, "on_continue_pressed")
 
