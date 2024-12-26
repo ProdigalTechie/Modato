@@ -3,6 +3,7 @@ extends "res://mods-unpacked/ProdigalTechie-Modato/extensions/ui/menus/run/chara
 onready var _character_panel:ItemPanelUI = $MarginContainer / VBoxContainer / DescriptionContainer / CharacterPanel
 onready var _stats:GridContainer = $MarginContainer / VBoxContainer / DescriptionContainer / GridContainer
 onready var _continue:Button = $MarginContainer / VBoxContainer / Button
+onready var _back:Button = $"%BackButton"
 
 var player_index = 0
 
@@ -14,13 +15,46 @@ func _ready()->void :
 	
 	#add customizeable stats
 	for effect in RunData.players_data[player_index].current_character.effects:	
-		#print(effect.serialize())
+		#print(effect.key.to_upper())
 		var new_stat_label = Label.new()
 
-		if effect.key == "effect_increase_stat_gains" or effect.key == "effect_reduce_stat_gains":
-			new_stat_label.text = tr(effect.key).format({
+		if effect.key.to_lower().begins_with("effect_increase") or effect.key.to_lower().begins_with("effect_reduce"):
+			#print(effect.stat_displayed)
+			new_stat_label.text = tr(effect.key.to_lower()).format({
 				"0": tr(effect.stat_displayed.to_upper())
+			}).trim_prefix("% ")
+		elif effect.key.begins_with("stat"):
+			new_stat_label.text = tr("stat").format({
+				"0": tr(effect.key.to_upper())
 			})
+		elif effect.key == "items_price":
+			new_stat_label.text = tr("items_price")
+		elif effect.key.begins_with("item"):
+			new_stat_label.text = tr("item").format({
+				"0": tr(effect.key.to_upper())
+			})
+		elif effect.key == "next_level_xp_needed":
+			new_stat_label.text = tr(effect.key)
+		elif effect.key == "pacifist":
+			new_stat_label.text = tr(effect.key)
+		elif effect.key.to_upper() == "EFFECT_WEAPON_CLASS_BONUS":
+			new_stat_label.text = tr(effect.key.to_upper()).format({
+				"0": "+",
+				"1": tr(effect.stat_displayed_name.to_upper()),
+				"2": tr("WEAPON_CLASS_" + effect.set_id.trim_prefix("set_").to_upper())
+			}).trim_prefix("+ ")
+		elif effect.key.to_upper().begins_with("WEAPON_CLASS_"):
+			new_stat_label.text = tr("weapon_class").format({
+				"0": tr(effect.key.to_upper())
+			})
+		elif effect.key == "structure":
+			new_stat_label.text = tr("structure")
+		elif effect.key == "":
+			# Romantic appears to have an empty key
+			new_stat_label.text = tr("EFFECT_MELEE_WEAPON_BONUS").format({
+				"0": "+",
+				"1": tr(effect.stat_displayed_name.to_upper())
+			}).trim_prefix("+ ")
 		else:
 			new_stat_label.text = tr(effect.key.to_upper())
 			
@@ -31,8 +65,11 @@ func _ready()->void :
 		new_stat.text = str(effect.value)
 		_stats.add_child(new_stat)
 	
-	_continue.text = "Select Weapon"
+	_continue.text = "Continue"
 	_continue.connect("button_up", self, "on_continue_pressed")
+
+	_back.text = "Back"
+	_back.connect("button_up", self, "_go_back_char_select")
 
 func manage_back(event:InputEvent)->void :
 	if event.is_action_pressed("ui_cancel"):
@@ -79,3 +116,9 @@ func on_continue_pressed()->void :
 		var _error = get_tree().change_scene(MenuData.difficulty_selection_scene)
 	else :
 		var _error = get_tree().change_scene(MenuData.weapon_selection_scene)
+
+func _go_back_char_select()->void :
+	for player in RunData.get_player_count():
+		Utils.last_elt_selected[player] = RunData.get_player_character(player)
+	RunData.revert_all_selections()
+	_change_scene(MenuData.character_selection_scene)
