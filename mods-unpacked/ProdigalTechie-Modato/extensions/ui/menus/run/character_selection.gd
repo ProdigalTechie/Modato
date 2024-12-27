@@ -2,7 +2,7 @@ extends "res://ui/menus/run/character_selection.gd"
 
 func _on_element_pressed(element: InventoryElement, _inventory_player_index: int)->void :
 	var char_select_id = "ProdigalTechie-Modato:CharacterSelect"
-	var customize_stats_scene = "res://mods-unpacked/ProdigalTechie-Modato/scenes/customize_stats.tscn"
+	var customize_stats_scene = "res://mods-unpacked/ProdigalTechie-Modato/extensions/ui/menus/run/customize_stats.tscn"
 	var inventory_player_index = FocusEmulatorSignal.get_player_index(element)
 	if inventory_player_index < 0:
 		return 
