@@ -9,7 +9,18 @@ const EXTS = [
 ]
 
 const TRANS = [
-	"translations.en.translation"
+	"translations.de.translation",
+	"translations.en.translation",
+	"translations.es.translation",
+	"translations.fr.translation",
+	"translations.it.translation",
+	"translations.ja.translation",
+	"translations.ko.translation",
+	"translations.pl.translation",
+	"translations.pt.translation",
+	"translations.ru.translation",
+	"translations.tr.translation",
+	"translations.zh_Hans_CN.translation",
 ]
 
 func _init():
