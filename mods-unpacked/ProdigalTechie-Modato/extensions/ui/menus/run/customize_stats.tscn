@@ -18,7 +18,7 @@ margin_right = 2242.0
 [node name="Title" parent="MarginContainer/VBoxContainer/TitleContainer" index="0"]
 margin_left = 856.0
 margin_right = 1386.0
-text = "CUSTOMIZE CHARACTER STATS"
+text = "CUSTOMIZE_CHARACTER_EFFECTS"
 
 [node name="DescriptionContainer" parent="MarginContainer/VBoxContainer" index="1"]
 margin_right = 2242.0

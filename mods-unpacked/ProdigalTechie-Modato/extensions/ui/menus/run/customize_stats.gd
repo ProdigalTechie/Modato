@@ -65,10 +65,10 @@ func _ready()->void :
 		new_stat.text = str(effect.value)
 		_stats.add_child(new_stat)
 	
-	_continue.text = "Continue"
+	_continue.text = tr("MENU_RESUME")
 	_continue.connect("button_up", self, "on_continue_pressed")
 
-	_back.text = "Back"
+	_back.text = tr("MENU_BACK")
 	_back.connect("button_up", self, "_go_back_char_select")
 
 func manage_back(event:InputEvent)->void :
