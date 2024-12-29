@@ -8,7 +8,7 @@ onready var _back:Button = $"%BackButton"
 var player_index = 0
 
 func _ready()->void :
-	
+
 	_character_panel.set_data(RunData.players_data[player_index].current_character, player_index)
 	_run_options_panel.hide()
 	_inventories.hide()
@@ -65,7 +65,7 @@ func _ready()->void :
 		new_stat.text = str(effect.value)
 		_stats.add_child(new_stat)
 	
-	_continue.text = tr("MENU_RESUME")
+	_continue.text = tr("continue_button")
 	_continue.connect("button_up", self, "on_continue_pressed")
 
 	_back.text = tr("MENU_BACK")

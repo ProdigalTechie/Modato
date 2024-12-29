@@ -1,2 +1,4 @@
 /*
 !mods-unpacked/
+*.translation
+*.csv.import
